@@ -1,0 +1,20 @@
+/* 支付宝样式兼容 */
+.a-page {
+    overflow: hidden;
+}
+.a-button{
+    margin-left: auto;
+    margin-right: auto;
+    line-height: inherit;
+}
+.a-input{
+    background-color: transparent;
+    width: 100%;
+    padding: 0;
+    vertical-align: middle;
+}
+.a-textarea{
+    background-color: transparent;
+    width: 100%;
+    padding: 0;
+}

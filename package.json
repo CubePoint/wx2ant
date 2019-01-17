@@ -1,0 +1,26 @@
+{
+  "name": "wx2ant",
+  "version": "1.0.0",
+  "description": "微信小程序 转 支付宝小程序",
+  "main": "index.js",
+  "scripts": {
+    "test": "wx2ant ./test/wx_xcx ./test/ant_xcx"
+  },
+  "keywords": [
+    "wechat",
+    "ant"
+  ],
+  "author": "CubePoint",
+  "license": "ISC",
+  "bin": {
+    "wx2ant": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CubePoint/wx2ant.git"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.2",
+    "parse5": "^5.0.0"
+  }
+}
