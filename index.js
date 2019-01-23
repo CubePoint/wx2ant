@@ -44,21 +44,33 @@ if (fs.existsSync(toPathBase)) {
 function isUnwanted(filename) {
 return /(?:Thumbs\.db|\.DS_Store|\.git|node_modules)$/i.test(filename);
 }
+
+// 自动生成文件夹
+function createFlod(dstpath) {
+  dstpath = dstpath.replace(/\\/g,'/');
+	var dirary = dstpath.split('/');
+
+  var dirtmp = dstpath;
+  for (var i=dirary.length-1;i>=0;i--) {
+    try {
+      fs.accessSync(dirtmp, fs.constants.F_OK | fs.constants.W_OK);
+      for (var j=i+1;j<dirary.length;j++) {
+        dirtmp += '/'+dirary[j];
+        try {
+          fs.mkdirSync(dirtmp);
+        }catch (err) {}
+      }
+      break;
+    }catch (err) {
+      dirtmp = dirtmp.slice(0,(dirary[i].length+1)*-1);
+    }
+  }
+}
 // 创建文件自动生成文件夹
 function writeFile(dstpath,infile,opt,async) {
   dstpath = dstpath.replace(/\\/g,'/');
-	var dirary = dstpath.split('/');
-    var dirtmp = dstpath;
-    for (var i=dirary.length-1;i>=0;i--) {
-        dirtmp = dirtmp.slice(0,(dirary[i].length+1)*-1);
-		try {
-			fs.accessSync(dirtmp, fs.constants.F_OK | fs.constants.W_OK);
-            break;
-		}catch (err) {
-			//不存在
-			fs.mkdirSync(dirtmp);
-		}
-    }
+  createFlod(dstpath.slice(0,(dstpath.lastIndexOf('/'))));
+
   if (async) {
     fs.writeFile(dstpath, infile,opt,function() {});
   }else {

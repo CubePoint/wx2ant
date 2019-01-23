@@ -1,6 +1,6 @@
 {
   "name": "wx2ant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "微信小程序 转 支付宝小程序",
   "main": "index.js",
   "scripts": {
